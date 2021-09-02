@@ -4,10 +4,10 @@ services:
   - docker
 
 before_install:
-  - docker build -t eyesfrog/react-test -f ./client/Dockerfile.dev ./client
+  - docker build -t react-test -f ./client/Dockerfile.dev ./client
 
 script:
-  - docker run -e CI=true eyesfrog/react-test npm test
+  - docker run -e CI=true react-test npm test
 
 after_success:
   - docker build -t eyesfrog/calc-client ./client
@@ -21,4 +21,3 @@ after_success:
   - docker push eyesfrog/calc-nginx
   - docker push eyesfrog/calc-server
   - docker push eyesfrog/calc-worker
-  
