@@ -4,20 +4,20 @@ services:
   - docker
 
 before_install:
-  - docker build -t eyesfrog/react-test -f ./client/Dockerfile.dev ./client
+  - docker build -t sweetfrog/react-test -f ./client/Dockerfile.dev ./client
 
 script:
-  - docker run -e CI=true eyesfrog/react-test npm test
+  - docker run -e CI=true sweetfrog/react-test npm test
 
 after_success:
-  - docker build -t eyesfrog/calc-client ./client
-  - docker build -t eyesfrog/calc-nginx ./nginx
-  - docker build -t eyesfrog/calc-server ./server
-  - docker build -t eyesfrog/calc-worker ./worker
+  - docker build -t sweetfrog/calc-client ./client
+  - docker build -t sweetfrog/calc-nginx ./nginx
+  - docker build -t sweetfrog/calc-server ./server
+  - docker build -t sweetfrog/calc-worker ./worker
   # Log in to the docker CLI
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   # Take those images and push them to docker hub
-  - docker push eyesfrog/calc-client
-  - docker push eyesfrog/calc-nginx
-  - docker push eyesfrog/calc-server
-  - docker push eyesfrog/calc-worker
+  - docker push sweetfrog/calc-client
+  - docker push sweetfrog/calc-nginx
+  - docker push sweetfrog/calc-server
+  - docker push sweetfrog/calc-worker
