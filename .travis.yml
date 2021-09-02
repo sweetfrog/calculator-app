@@ -21,3 +21,4 @@ after_success:
   - docker push eyesfrog/calc-nginx
   - docker push eyesfrog/calc-server
   - docker push eyesfrog/calc-worker
+  
